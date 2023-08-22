@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AddressService } from '../address.service'; // Путь к сервису
+import { AddressService } from '../../address.service';
+import { Address } from 'src/app/types';
 
 @Component({
   selector: 'app-list',
@@ -7,14 +8,14 @@ import { AddressService } from '../address.service'; // Путь к сервис
   styleUrls: ['./list.component.css'],
 })
 export class ListComponent implements OnInit {
-  addresses: any[] = [];
-
+  addresses: Address[] = [];
+  isLoading: boolean = false;
   constructor(private addressService: AddressService) {}
 
   delete(id: string): void {
     this.addressService.deleteAddress(id).subscribe({
       next: (response) => {
-        this.ngOnInit()
+        this.ngOnInit();
         console.log('Deleted successfully', response);
       },
       error: (error) => {
@@ -24,8 +25,10 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.addressService.getAddresses().subscribe((data) => {
       this.addresses = data;
+      this.isLoading = false;
     });
   }
 }

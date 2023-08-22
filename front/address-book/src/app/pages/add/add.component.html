@@ -1,4 +1,5 @@
 <div class="list">
+  <app-loader [isLoading]="isLoading"></app-loader>
     <h2>Add new address</h2>
     <form (ngSubmit)="create()" class="form">
         <input type="text" placeholder="Name" id="name" [(ngModel)]="newAddress.name" name="name" required class="input"/>

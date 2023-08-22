@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AddressService } from '../address.service';
+import { AddressService } from '../../address.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,18 +15,22 @@ export class AddComponent implements OnInit {
     house: '',
   };
 
+  isLoading: boolean = false;
+
   constructor(private addressService: AddressService, private router: Router) {}
 
   create(): void {
+    this.isLoading = true;
     this.addressService.addAddress(this.newAddress).subscribe({
       next: (response) => {
-        this.router.navigate(['/list'])
+        this.router.navigate(['/list']);
         console.log('Added successfully', this.newAddress);
       },
       error: (error) => {
         console.error(error);
       },
     });
+    this.isLoading = false;
   }
 
   ngOnInit(): void {}
