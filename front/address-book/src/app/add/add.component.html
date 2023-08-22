@@ -1,1 +1,14 @@
-<p>add works!</p>
+<div class="list">
+    <h2>Add new address</h2>
+    <form (ngSubmit)="create()" class="form">
+        <input type="text" placeholder="Name" id="name" [(ngModel)]="newAddress.name" name="name" required class="input"/>
+        <br />
+        <input type="text" placeholder="City" id="city" [(ngModel)]="newAddress.city" name="city" required class="input"/>
+        <br />
+        <input type="text" placeholder="Street" id="street" [(ngModel)]="newAddress.street" name="street" required class="input"/>
+        <br />
+        <input type="text" placeholder="House" id="house" [(ngModel)]="newAddress.house" name="house" required class="input"/>
+        <br />
+        <button type="submit" class="btn">Add Address</button>
+    </form>
+</div>

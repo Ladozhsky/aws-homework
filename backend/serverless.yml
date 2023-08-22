@@ -1,0 +1,29 @@
+service: my-local-service
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stage: dev
+  region: us-east-1
+
+plugins:
+  - serverless-dynamodb-local
+  - serverless-offline
+
+# custom:
+#   dynamodb:
+#     start:
+#       port: 8000
+#       inMemory: true
+#       migrate: true
+
+functions:
+  app:
+    handler: dist/app.handler
+    events:
+      - http: "GET /v1/addresses"
+      - http: "GET /v1/addresses/{id}"
+      - http: "POST /v1/addresses"
+      - http: "PUT /v1/addresses/{id}"
+      - http: "DELETE /v1/addresses/{id}"
+

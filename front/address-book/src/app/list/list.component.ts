@@ -11,6 +11,18 @@ export class ListComponent implements OnInit {
 
   constructor(private addressService: AddressService) {}
 
+  delete(id: string): void {
+    this.addressService.deleteAddress(id).subscribe({
+      next: (response) => {
+        this.ngOnInit()
+        console.log('Deleted successfully', response);
+      },
+      error: (error) => {
+        console.error(error);
+      },
+    });
+  }
+
   ngOnInit(): void {
     this.addressService.getAddresses().subscribe((data) => {
       this.addresses = data;

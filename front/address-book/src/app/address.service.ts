@@ -9,6 +9,12 @@ export class AddressService {
 
   constructor(private http: HttpClient) { }
   getAddresses(): Observable<any> {
-    return this.http.get<any>('https://47hpo17an4.execute-api.eu-north-1.amazonaws.com/default/GetAddresses');
+    return this.http.get<any>('http://localhost:3000/dev/v1/addresses');
+  }
+  addAddress(address: any): Observable<any> {
+    return this.http.post<any>('http://localhost:3000/dev/v1/addresses', address);
+  }
+  deleteAddress(id: string): Observable<any> {
+    return this.http.delete<any>(`http://localhost:3000/dev/v1/addresses/${id}`);
   }
 }

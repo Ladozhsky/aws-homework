@@ -24,3 +24,10 @@
     width: calc(100vw - 200px);
     padding: 20px;
   }
+
+.btn {
+    background-color: red;
+    border-width: 0;
+    padding: 4px;
+    border-radius: 5px;
+}
