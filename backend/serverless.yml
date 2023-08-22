@@ -7,23 +7,15 @@ provider:
   region: us-east-1
 
 plugins:
-  - serverless-dynamodb-local
   - serverless-offline
 
-# custom:
-#   dynamodb:
-#     start:
-#       port: 8000
-#       inMemory: true
-#       migrate: true
-
 functions:
-  app:
-    handler: dist/app.handler
-    events:
-      - http: "GET /v1/addresses"
-      - http: "GET /v1/addresses/{id}"
-      - http: "POST /v1/addresses"
-      - http: "PUT /v1/addresses/{id}"
-      - http: "DELETE /v1/addresses/{id}"
 
+  addresses:
+    handler: dist/manager.handler
+    events:
+      - http: "GET /addresses"
+      - http: "GET /addresses/{id}"
+      - http: "POST /addresses"
+      - http: "PUT /addresses/{id}"
+      - http: "DELETE /addresses/{id}"
