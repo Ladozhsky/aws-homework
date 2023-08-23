@@ -70,14 +70,29 @@ class Addresses {
 
   async updateOne(id: string, item: any) {
     try {
+      delete item.id;
+      const expressionAttributeValues: any = {};
+      const expressionAttributeNames: any = {};
+
+      for (const key in item) {
+        const expressionAttributeName = `#${key}`;
+        expressionAttributeNames[expressionAttributeName] = key;
+        expressionAttributeValues[`:${key}`] = item[key];
+      }
+
+      const updateExpression = Object.keys(item)
+        .map((key) => `#${key} = :${key}`)
+        .join(", ");
       const params = {
         TableName: this.tableName,
         Key: {
           id: id,
         },
-        Item: item, // doesn't update an item, need another approach
+        UpdateExpression: `SET ${updateExpression}`,
+        ExpressionAttributeNames: expressionAttributeNames,
+        ExpressionAttributeValues: expressionAttributeValues,
+        ReturnValues: "ALL_NEW",
       };
-      console.log(params.Item);
       await this.dynamodb.update(params).promise();
       return { message: "Item updated" };
     } catch (error) {

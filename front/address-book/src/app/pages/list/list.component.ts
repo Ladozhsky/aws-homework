@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AddressService } from '../../address.service';
 import { Address } from 'src/app/types';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -10,7 +11,7 @@ import { Address } from 'src/app/types';
 export class ListComponent implements OnInit {
   addresses: Address[] = [];
   isLoading: boolean = false;
-  constructor(private addressService: AddressService) {}
+  constructor(private addressService: AddressService, private router: Router) {}
 
   delete(id: string): void {
     this.addressService.deleteAddress(id).subscribe({
@@ -22,6 +23,9 @@ export class ListComponent implements OnInit {
         console.error(error);
       },
     });
+  }
+  edit(id: string): void {
+    this.router.navigate([`/edit/${id}`]);
   }
 
   ngOnInit(): void {

@@ -25,8 +25,14 @@
     padding: 20px;
   }
 
-.btn {
+.btn-delete {
     background-color: red;
+    border-width: 0;
+    padding: 4px;
+    border-radius: 5px;
+}
+.btn-edit {
+    background-color: yellow;
     border-width: 0;
     padding: 4px;
     border-radius: 5px;

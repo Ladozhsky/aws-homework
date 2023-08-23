@@ -34,13 +34,5 @@ export class AddComponent implements OnInit {
   }
 
   ngOnInit(): void {}
-  //   this.addressService.addAddress(this.newAddress).subscribe(
-  //     response => {
-  //         console.log('Added successfully', response)
-  //     },
-  //     error => {
-  //         console.error(error)
-  //     }
-  //   )
-  // }
+
 }

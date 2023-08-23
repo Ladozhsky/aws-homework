@@ -25,10 +25,7 @@ exports.handler = async (event: any) => {
           body: JSON.stringify(response),
         };
       case event.httpMethod === "PUT" && event.path === `/addresses/${event.pathParameters.id}`:
-        response = await addresses.updateOne(
-          event.pathParameters.id,
-          JSON.parse(event.body)
-        );
+        response = await addresses.updateOne(event.pathParameters.id, JSON.parse(event.body));
         return {
           statusCode: 200,
           body: JSON.stringify(response),

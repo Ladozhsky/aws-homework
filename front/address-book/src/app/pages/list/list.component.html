@@ -7,6 +7,7 @@
         <th>City</th>
         <th>Street</th>
         <th>House</th>
+        <th style="text-align: center">Edit</th>
         <th style="text-align: center">Delete</th>
       </tr>
     </thead>
@@ -17,7 +18,10 @@
         <td>{{ address.street }}</td>
         <td>{{ address.house }}</td>
         <td style="text-align: center">
-          <button (click)="delete(address.id)" class="btn">X</button>
+          <button (click)="edit(address.id)" class="btn-edit"><mat-icon>edit</mat-icon></button>
+        </td>
+        <td style="text-align: center">
+          <button (click)="delete(address.id)" class="btn-delete"><mat-icon>delete</mat-icon></button>
         </td>
       </tr>
     </tbody>

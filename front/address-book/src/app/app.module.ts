@@ -9,6 +9,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { AddComponent } from './pages/add/add.component';
 import { FormsModule } from '@angular/forms';
 import { LoaderComponent } from './components/loader/loader.component';
+import { EditComponent } from './pages/edit/edit.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -18,8 +20,9 @@ import { LoaderComponent } from './components/loader/loader.component';
     SidebarComponent,
     AddComponent,
     LoaderComponent,
+    EditComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, MatIconModule],
   providers: [],
   bootstrap: [AppComponent],
 })
